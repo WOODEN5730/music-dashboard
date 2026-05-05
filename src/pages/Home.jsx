@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SearchBar from "../components/SearchBar";
+import NavBar from "../components/NavBar";
 import SongList from "../components/SongList";
 import { searchTracks } from "../api/deezer";
 import "../App.css";
@@ -8,14 +8,14 @@ export default function Home() {
   const [tracks, setTracks] = useState([]);
 
   const handleSearch = async (query) => {
+    if (!query.trim()) return; // safety check
     const results = await searchTracks(query);
-    setTracks(results);
+    setTracks(results || []);
   };
 
   return (
     <div>
-      <h1>Music Dashboard</h1>
-      <SearchBar onSearch={handleSearch} />
+      <NavBar onSearch={handleSearch} />
       <SongList tracks={tracks} />
     </div>
   );
