@@ -5,7 +5,8 @@ export default function SearchBar({ onSearch }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(query);
+    if (!query.trim()) return;     // prevents empty searches
+    onSearch(query.trim());
   };
 
   return (
@@ -16,7 +17,9 @@ export default function SearchBar({ onSearch }) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button type="submit">Search</button>
+      <button type="submit" disabled={!query.trim()}>
+        Search
+      </button>
     </form>
   );
 }
