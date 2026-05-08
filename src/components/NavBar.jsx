@@ -7,7 +7,7 @@ export default function NavBar({ onSearch }) {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <h1 className="logo">MusicDash</h1>
+        <h1 className="logo">Music Dashboard</h1>
 
         <button
           className="menu-toggle"
